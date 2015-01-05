@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:util="http://www.springframework.org/schema/util"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+       					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
+       					   http://www.springframework.org/schema/context
+       					   http://www.springframework.org/schema/context/spring-context.xsd
+       					   http://www.springframework.org/schema/jdbc 
+     					   http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
+
+	<context:component-scan base-package="be.tiwi.vop.racing" />
+	<context:annotation-config />
+
+	<!-- datasource properties to set the HikariConfig properties -->
+	<bean
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:datasource.properties" />
+	</bean>
+
+	<beans profile="test">
+		<!-- hsqldbDataSource bean for testing purposes -->
+		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+			autowire="constructor" />
+
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+			destroy-method="shutdown">
+			<constructor-arg>
+				<bean class="com.zaxxer.hikari.HikariConfig">
+					<constructor-arg>
+						<props>
+							<prop key="dataSource.url">${hsqldb.url}</prop>
+							<prop key="dataSource.user">${hsqldb.user}</prop>
+							<prop key="dataSource.password">${hsqldb.password}</prop>
+						</props>
+					</constructor-arg>
+					<property name="dataSourceClassName" value="org.hsqldb.jdbc.JDBCDataSource" />
+					<property name="poolName" value="testingPool" />
+					<property name="connectionTestQuery" value="SELECT 1" />
+					<property name="connectionInitSql" value="SELECT 1" />
+					<property name="maximumPoolSize" value="5" />
+				</bean>
+			</constructor-arg>
+		</bean>
+
+		<!-- execute a script to create tables after creation of bean for in-memory 
+			HSQLDB -->
+		<jdbc:embedded-database id="dataSource" type="HSQL">
+			<jdbc:script location="classpath:schema.sql" />
+			<jdbc:script location="classpath:test-data.sql" />
+		</jdbc:embedded-database>
+	</beans>
+
+	<beans profile="development">
+		<!-- developmentDataSource bean for local development purposes -->
+		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+			autowire="constructor" />
+
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+			destroy-method="shutdown">
+			<constructor-arg>
+				<bean class="com.zaxxer.hikari.HikariConfig">
+					<constructor-arg>
+						<props>
+							<prop key="dataSource.user">${development.user}</prop>
+							<prop key="dataSource.password">${development.password}</prop>
+							<prop key="dataSource.url">${development.url}</prop>
+							<prop key="dataSource.cachePrepStmts">true</prop>
+							<prop key="dataSource.prepStmtCacheSize">250</prop>
+						</props>
+					</constructor-arg>
+					<property name="dataSourceClassName"
+						value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
+					<property name="poolName" value="developmentPool" />
+					<property name="connectionTestQuery" value="SELECT 1" />
+					<property name="connectionInitSql" value="SELECT 1" />
+					<property name="maximumPoolSize" value="15" />
+				</bean>
+			</constructor-arg>
+		</bean>
+	</beans>
+
+	<beans profile="staging">
+		<!-- dataSource bean for staging purposes -->
+		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+			autowire="constructor" />
+
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+			destroy-method="shutdown">
+			<constructor-arg>
+				<bean class="com.zaxxer.hikari.HikariConfig">
+					<constructor-arg>
+						<props>
+							<prop key="dataSource.user">${user}</prop>
+							<prop key="dataSource.password">${password}</prop>
+							<prop key="dataSource.serverName">${staging.serverName}</prop>
+							<prop key="dataSource.portNumber">${local.portNumber}</prop>
+							<prop key="dataSource.databaseName">${staging.databaseName}</prop>
+							<prop key="dataSource.cachePrepStmts">true</prop>
+							<prop key="dataSource.prepStmtCacheSize">250</prop>
+						</props>
+					</constructor-arg>
+					<property name="dataSourceClassName"
+						value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
+					<property name="poolName" value="stagingPool" />
+					<property name="connectionTestQuery" value="SELECT 1" />
+					<property name="connectionInitSql" value="SELECT 1" />
+					<property name="maximumPoolSize" value="3" />
+				</bean>
+			</constructor-arg>
+		</bean>
+	</beans>
+
+	<beans profile="release">
+		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+			autowire="constructor" />
+
+		<!-- dataSource bean for release purposes -->
+		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
+			destroy-method="shutdown">
+			<constructor-arg>
+				<bean class="com.zaxxer.hikari.HikariConfig">
+					<constructor-arg>
+						<props>
+							<prop key="dataSource.user">${user}</prop>
+							<prop key="dataSource.password">${password}</prop>
+							<prop key="dataSource.serverName">${release.serverName}</prop>
+							<prop key="dataSource.portNumber">${local.portNumber}</prop>
+							<prop key="dataSource.databaseName">${release.databaseName}</prop>
+							<prop key="dataSource.cachePrepStmts">true</prop>
+							<prop key="dataSource.prepStmtCacheSize">250</prop>
+						</props>
+					</constructor-arg>
+					<property name="dataSourceClassName"
+						value="com.mysql.jdbc.jdbc2.optional.MysqlDataSource" />
+					<property name="poolName" value="releasePool" />
+					<property name="connectionTestQuery" value="SELECT 1" />
+					<property name="connectionInitSql" value="SELECT 1" />
+					<property name="maximumPoolSize" value="10" />
+				</bean>
+			</constructor-arg>
+		</bean>
+	</beans>
+</beans>

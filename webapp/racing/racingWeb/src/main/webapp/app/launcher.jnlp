@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="$$codebase">
+	<information>
+		<title>racing-2D</title>
+	 	<vendor>t0tec</vendor>
+    	<description>2D-race game</description>
+	</information>
+    <security>
+		<all-permissions/>
+	</security>
+    <resources>
+    	<j2se version="1.7" java-vm-args="-Xmx512m" />
+    	<jar href="racing-2D.jar"/>
+    </resources>
+    <application-desc main-class="be.tiwi.vop.racing.desktop.Start"/>
+ </jnlp>

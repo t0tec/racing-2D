@@ -1,0 +1,106 @@
+.div {
+	width: 120px;
+	height: 120px;
+	padding: 0px;
+	border: 5px ridge #ff0000;
+	float: left;
+	background: #663300;
+}
+
+.wrapper {
+	width: 100%;
+	overflow: hidden;
+}
+
+sprite {
+	background: url('../img/tile_sprite.png') no-repeat top left;
+	width: 110px;
+	height: 110px;
+}
+
+.sprite.EARTH {
+	background-position: 0px 0px;
+}
+
+.sprite.START {
+	background-position: -115px 0px;
+}
+
+.sprite.STRAIGHT {
+	background-position: -230px 0px;
+}
+
+.sprite.STRAIGHT_UP {
+	background-position: -345px 0px;
+}
+
+.sprite.L_TURN {
+	background-position: -460px 0px;
+}
+
+.sprite.L_TURN_90 {
+	background-position: -575px 0px;
+}
+
+.sprite.L_TURN_180 {
+	background-position: -690px 0px;
+}
+
+.sprite.L_TURN_270 {
+	background-position: -805px 0px;
+}
+
+body>p.tooltipObstacle {
+	display: none;
+	position: absolute;
+	border: 1px solid #333;
+	background-color: #161616;
+	border-radius: 5px;
+	padding: 10px;
+	color: #fff;
+	font-size: 12px;
+}
+
+#tiles,#checks {
+	display: none;
+}
+
+div#loader {
+	display: none;
+	float: right;
+}
+
+@media ( min-width : 979px) {
+	#midCol.affix-top {
+		position: fixed;
+		width: 265px;
+		margin-right: 10px;
+	}
+	#midCol.affix {
+		position: static;
+		width: 100%;
+	}
+}
+
+@media ( min-width : 767px) {
+	.affix,.affix-top {
+		position: fixed;
+	}
+}
+
+#centerCanvas {
+	width: 850px;
+}
+
+#centerCanvas canvas {
+	padding-left: 0;
+	padding-right: 0;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+#components img {
+	margin: 10px 5px;
+	z-index: 500;
+}

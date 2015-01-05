@@ -1,0 +1,23 @@
+body {
+	background-image: url("../img/bg.jpg");
+	background-size: 100%;
+}
+
+.navbar {
+	opacity: 0.8;
+}
+
+#recentEvents li {
+	list-style-type: none;
+	border-bottom: 1px solid black;
+	width: 1060px;
+	height: 20px;
+}
+
+.action {
+	float: left;
+}
+
+.time {
+	float: right;
+}

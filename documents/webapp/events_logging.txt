@@ -1,0 +1,22 @@
+Tournaments:
+- enroll
+- resign
+- insert
+- insertResult
+- insertResults
+
+Circuits:
+- favorite
+- unfavorite
+- updateObstacles
+- deleteObstacles
+- insertObstacles
+- insert
+- update
+- insertTiles
+- updateTiles
+- deleteTiles
+
+Ghosts:
+- insert
+- update

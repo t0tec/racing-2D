@@ -1,0 +1,11 @@
+language: java
+
+jdk:
+  - openjdk7
+  - oraclejdk7
+
+env:
+  - POM_DIR=desktop-app/racingDesktop
+  - POM_DIR=webapp/racing
+  
+script: mvn -f $POM_DIR/pom.xml clean install

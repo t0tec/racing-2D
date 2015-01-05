@@ -1,0 +1,84 @@
+*.class
+
+# Mobile Tools for Java (J2ME)
+.mtj.tmp/
+
+# Package Files #
+*.jar
+*.war
+*.ear
+
+# virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
+hs_err_pid*
+
+# Eclipse
+*.pydevproject
+.metadata
+.gradle
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.settings/
+.loadpath
+.project
+.classpath
+
+# External tool builders
+.externalToolBuilders/
+
+# Locally stored "Eclipse launch configurations"
+*.launch
+
+# CDT-specific
+.cproject
+
+# PDT-specific
+.buildpath
+
+# sbteclipse plugin 
+.target
+
+# TeXlipse plugin
+.texlipse
+
+# ignore tomcat Server
+webapp/Servers
+
+# NetBeans
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+nbactions.xml
+nb-configuration.xml
+
+# Ignore target folders
+/desktop-app/racingDesktop/target/
+/webapp/racing/racingDomain/target/
+/webapp/racing/racingAPI/target/
+/webapp/racing/racingWeb/target/
+/webapp/racing/racingUtil/target/
+/webapp/racing/racingConfig/target/
+
+# Spring configuration & database property files
+/webapp/racing/racingConfig/src/main/resources/datasource.properties
+
+# Ignore scripts
+/scripts/db/resetdb.pl
+
+# Ignore service clients & backend active profile
+/webapp/racing/racingDomain/src/main/java/be/tiwi/vop/racing/DaoFactory.java
+/webapp/racing/racingWeb/src/main/java/be/tiwi/vop/racing/service/client/AbstractServiceClient.java
+/desktop-app/racingDesktop/src/main/java/be/tiwi/vop/racing/desktop/restclient/AbstractServiceClient.java
+
+# Unignore certain .jar files for Java Web Start
+!webapp/racing/racingWeb/src/main/webapp/app/*.jar
+!webapp/racing/racingWeb/src/main/webapp/WEB-INF/lib/*.jar
+
+# Unignore .jar in desktop executable
+!desktop-executable/racing-2D/*.jar
