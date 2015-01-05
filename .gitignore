@@ -65,17 +65,6 @@ nb-configuration.xml
 /webapp/racing/racingUtil/target/
 /webapp/racing/racingConfig/target/
 
-# Spring configuration & database property files
-/webapp/racing/racingConfig/src/main/resources/datasource.properties
-
-# Ignore scripts
-/scripts/db/resetdb.pl
-
-# Ignore service clients & backend active profile
-/webapp/racing/racingDomain/src/main/java/be/tiwi/vop/racing/DaoFactory.java
-/webapp/racing/racingWeb/src/main/java/be/tiwi/vop/racing/service/client/AbstractServiceClient.java
-/desktop-app/racingDesktop/src/main/java/be/tiwi/vop/racing/desktop/restclient/AbstractServiceClient.java
-
 # Unignore certain .jar files for Java Web Start
 !webapp/racing/racingWeb/src/main/webapp/app/*.jar
 !webapp/racing/racingWeb/src/main/webapp/WEB-INF/lib/*.jar
