@@ -26,44 +26,34 @@ public class Car {
   private static final int SPEEDCOEFFICIENT = 100;
   private static final double WHEELBASE = 3000;
 
-  private double carVelocity;
-  private double carOrientation;
-  private double steeringInput;
-  private boolean isAccelerating;
-  private boolean isBraking;
-  private boolean isSteeringLeft;
-  private boolean isSteeringRight;
+  private double carVelocity = 0;
+  private double carOrientation = 0;
+  private double steeringInput = 0;
+  private boolean isAccelerating = false;
+  private boolean isBraking = false;
+  private boolean isSteeringLeft = false;
+  private boolean isSteeringRight = false;
+
+  private double roadResistance = -0.01;
+  private boolean isColliding = false;
+
+  private int amount = 150;
+
+  private int batteryERSLevel = 100;
+  private boolean isBatteryERSActive = false;
+  private static final int maximumBatteryERSLevel = 100;
 
   private ICarHandling carHandling;
   private Point rearTyres;
   private Point frontTyres;
-  private double roadResistance;
-  private boolean isColliding;
-
-  private int amount = 150;
-
-  private int batteryERSLevel;
-  private boolean isBatteryERSActive;
-  private static final int maximumBatteryERSLevel = 100;
 
   private String carImageLocation;
   private static final int IMAGE_WIDTH = 40;
   private static final int IMAGE_HEIGHT = 20;
 
   public Car(ICarHandling carHandling, String carImageLocation) {
-    this.carVelocity = 0;
-    this.carOrientation = 0;
-    this.steeringInput = 0;
-    this.isAccelerating = false;
-    this.isBraking = false;
-    this.isSteeringLeft = false;
-    this.isSteeringRight = false;
     this.carHandling = carHandling;
-    this.roadResistance = -0.01;
     this.carImageLocation = carImageLocation;
-    this.isColliding = false;
-    this.isBatteryERSActive = false;
-    this.batteryERSLevel = 100;
   }
 
   private void changeVelocity() {

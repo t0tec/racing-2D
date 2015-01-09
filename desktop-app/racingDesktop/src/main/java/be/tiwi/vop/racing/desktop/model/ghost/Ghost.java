@@ -11,13 +11,11 @@ public class Ghost {
   private String username;
   private int userId;
   private int circuitId;
-  private LinkedHashMap<Integer, Pose> poses;
+  private LinkedHashMap<Integer, Pose> poses = new LinkedHashMap<Integer, Pose>();
   private Point position;
   private double orientation;
 
-  public Ghost() {
-    this.poses = new LinkedHashMap<Integer, Pose>();
-  }
+  public Ghost() {}
 
   public int getId() {
     return id;

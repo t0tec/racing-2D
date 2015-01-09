@@ -11,13 +11,10 @@ public class Circuit {
   private Direction direction;
   private int columns;
   private int rows;
-  private List<Tile> tiles;
-  private List<Obstacle> obstacles;
+  private List<Tile> tiles = new ArrayList<Tile>();
+  private List<Obstacle> obstacles = new ArrayList<Obstacle>();
 
-  public Circuit() {
-    this.tiles = new ArrayList<Tile>();
-    this.obstacles = new ArrayList<Obstacle>();
-  }
+  public Circuit() {}
 
   public Circuit(List<Tile> tiles, List<Obstacle> obstacles) {
     this.tiles = tiles;

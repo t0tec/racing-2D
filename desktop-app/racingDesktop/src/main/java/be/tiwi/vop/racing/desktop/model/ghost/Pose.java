@@ -6,6 +6,8 @@ public class Pose {
   private Point position;
   private double orientation;
 
+  public Pose() {}
+
   public Pose(Point positon, double orientation) {
     this.position = positon;
     this.orientation = orientation;

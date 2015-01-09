@@ -24,6 +24,7 @@ public class Start {
               + " is offline or there is an internal server error!", "REST server offline",
               JOptionPane.WARNING_MESSAGE);
         }
+
         new MainWindow().showLoginPanel();
       }
     });
