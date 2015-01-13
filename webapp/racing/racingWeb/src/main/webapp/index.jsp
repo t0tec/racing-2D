@@ -17,11 +17,11 @@
 		<h1>
 			<fmt:message key="index.h1" />
 		</h1>
-		<a href="changeLanguage.jsp?lang=fr_FR"><img align="right"
+		<a href="changeLanguage.do?lang=fr"><img align="right"
 			src="./img/fra.png" width="18" height="11" alt="french" /></a> <a
-			href="changeLanguage.jsp?lang=en"><img align="right"
+			href="changeLanguage.do?lang=en"><img align="right"
 			src="./img/gbr.png" width="18" height="11" alt="english" /></a> <a
-			href="changeLanguage.jsp?lang=nl"><img align="right"
+			href="changeLanguage.do?lang=nl"><img align="right"
 			src="./img/ned.png" width="18" height="11" alt="dutch" /></a>
 
 		<% 
