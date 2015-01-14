@@ -1,6 +1,7 @@
 package be.tiwi.vop.racing.servlets;
 
 import java.io.IOException;
+import java.util.Arrays;
 import java.util.Locale;
 
 import javax.servlet.ServletException;
@@ -26,9 +27,8 @@ public class LanguageSelectorServlet extends HttpServlet {
       throws ServletException, IOException {
     final String lang = request.getParameter("lang");
 
-    logger.debug("changing language to: " + lang);
-
     if (isLanguageSupported(lang)) {
+      logger.debug("changing language to: " + lang);
       Config.set(request.getSession(), Config.FMT_LOCALE, lang);
     }
 
@@ -36,10 +36,8 @@ public class LanguageSelectorServlet extends HttpServlet {
   }
 
   private boolean isLanguageSupported(final String lang) {
-    for (Locale locale : Locale.getAvailableLocales()) {
-      if (locale.equals(new Locale(lang))) {
-        return true;
-      }
+    if (Arrays.asList(Locale.getAvailableLocales()).contains(new Locale(lang))) {
+      return true;
     }
     return false;
   }

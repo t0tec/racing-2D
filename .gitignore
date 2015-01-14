@@ -57,13 +57,15 @@ nbdist/
 nbactions.xml
 nb-configuration.xml
 
+# Covers JetBrains IDEs: IntelliJ, RubyMine, PhpStorm, AppCode, PyCharm
+*.iml
+
+## Directory-based project format:
+.idea/
+# if you remove the above rule, at least ignore the following:
+
 # Ignore target folders
-/desktop-app/racingDesktop/target/
-/webapp/racing/racingDomain/target/
-/webapp/racing/racingAPI/target/
-/webapp/racing/racingWeb/target/
-/webapp/racing/racingUtil/target/
-/webapp/racing/racingConfig/target/
+target/
 
 # Unignore certain .jar files for Java Web Start
 !webapp/racing/racingWeb/src/main/webapp/app/*.jar
