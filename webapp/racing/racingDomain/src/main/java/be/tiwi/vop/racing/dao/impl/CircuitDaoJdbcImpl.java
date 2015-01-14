@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.CircuitDao;
-import be.tiwi.vop.racing.pojo.Circuit;
-import be.tiwi.vop.racing.pojo.Circuit.Direction;
+import be.tiwi.vop.racing.model.Circuit;
+import be.tiwi.vop.racing.model.Circuit.Direction;
 
 public class CircuitDaoJdbcImpl implements CircuitDao {
   private static final Logger logger = LoggerFactory.getLogger(CircuitDaoJdbcImpl.class);

@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.dbunit.dao.test;
+package be.tiwi.vop.racing.test;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -11,10 +11,10 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.tiwi.vop.racing.dbunit.dao.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.pojo.Tournament;
-import be.tiwi.vop.racing.pojo.Tournament.Formule;
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.factory.test.BaseSetupTest;
+import be.tiwi.vop.racing.model.Tournament;
+import be.tiwi.vop.racing.model.Tournament.Formule;
+import be.tiwi.vop.racing.model.User;
 
 public class TournamentDaoTest extends BaseSetupTest {
   private static final Logger logger = LoggerFactory.getLogger(TournamentDaoTest.class);

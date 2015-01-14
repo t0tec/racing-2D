@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.dbunit.dao.test;
+package be.tiwi.vop.racing.test;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,8 +10,8 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoCommand;
 import be.tiwi.vop.racing.DaoManager;
-import be.tiwi.vop.racing.dbunit.dao.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.pojo.Race;
+import be.tiwi.vop.racing.factory.test.BaseSetupTest;
+import be.tiwi.vop.racing.model.Race;
 
 public class RaceDaoTest extends BaseSetupTest {
   private static final Logger logger = LoggerFactory.getLogger(RaceDaoTest.class);

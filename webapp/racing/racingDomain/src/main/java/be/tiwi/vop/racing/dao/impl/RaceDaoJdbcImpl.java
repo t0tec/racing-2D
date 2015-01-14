@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.RaceDao;
-import be.tiwi.vop.racing.pojo.Race;
+import be.tiwi.vop.racing.model.Race;
 
 public class RaceDaoJdbcImpl implements RaceDao {
   private static final Logger logger = LoggerFactory.getLogger(TileDaoJdbcImpl.class);

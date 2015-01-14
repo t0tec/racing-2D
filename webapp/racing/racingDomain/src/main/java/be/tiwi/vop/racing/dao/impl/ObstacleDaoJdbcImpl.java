@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.ObstacleDao;
-import be.tiwi.vop.racing.pojo.Obstacle;
-import be.tiwi.vop.racing.pojo.ObstacleType;
+import be.tiwi.vop.racing.model.Obstacle;
+import be.tiwi.vop.racing.model.ObstacleType;
 
 public class ObstacleDaoJdbcImpl implements ObstacleDao {
 

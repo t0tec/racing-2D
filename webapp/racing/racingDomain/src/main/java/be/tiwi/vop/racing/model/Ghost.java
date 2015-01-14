@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 import java.util.HashMap;
 import java.util.LinkedHashMap;
@@ -9,10 +9,17 @@ public class Ghost {
   private String username;
   private int userId;
   private int circuitId;
-  private LinkedHashMap<Integer, Pose> poses;
+  private LinkedHashMap<Integer, Pose> poses = new LinkedHashMap<Integer, Pose>();;
 
-  public Ghost() {
-    this.poses = new LinkedHashMap<Integer, Pose>();
+  public Ghost() {}
+
+  public Ghost(int circuitId,
+               LinkedHashMap<Integer, Pose> poses, int time, int userId, String username) {
+    this.circuitId = circuitId;
+    this.poses = poses;
+    this.time = time;
+    this.userId = userId;
+    this.username = username;
   }
 
   public int getId() {

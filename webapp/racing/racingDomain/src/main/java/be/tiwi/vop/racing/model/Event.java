@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 import java.util.Date;
 
@@ -8,12 +8,10 @@ public class Event {
   private String action;
   private Date timestamp;
 
-  public Event() {
-    // Explicit public default constructor
-  }
+  public Event() {}
 
-  public Event(int userid, String act) {
-    this.action = act;
+  public Event(int userid, String action) {
+    this.action = action;
     this.userId = userid;
     this.timestamp = new Date();
   }

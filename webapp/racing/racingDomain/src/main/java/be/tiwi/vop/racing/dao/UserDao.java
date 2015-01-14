@@ -2,7 +2,7 @@ package be.tiwi.vop.racing.dao;
 
 import java.util.List;
 
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.model.User;
 
 public interface UserDao {
   List<User> getUsers();

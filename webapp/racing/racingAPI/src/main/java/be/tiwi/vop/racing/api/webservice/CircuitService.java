@@ -16,11 +16,11 @@ import org.springframework.stereotype.Component;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
 import be.tiwi.vop.racing.api.transformer.FeedTransformer;
-import be.tiwi.vop.racing.pojo.Circuit;
-import be.tiwi.vop.racing.pojo.Obstacle;
-import be.tiwi.vop.racing.pojo.ObstacleType;
-import be.tiwi.vop.racing.pojo.Tile;
-import be.tiwi.vop.racing.pojo.TileType;
+import be.tiwi.vop.racing.model.Circuit;
+import be.tiwi.vop.racing.model.Obstacle;
+import be.tiwi.vop.racing.model.ObstacleType;
+import be.tiwi.vop.racing.model.Tile;
+import be.tiwi.vop.racing.model.TileType;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

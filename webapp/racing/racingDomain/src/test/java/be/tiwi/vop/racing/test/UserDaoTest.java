@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.dbunit.dao.test;
+package be.tiwi.vop.racing.test;
 
 import java.util.List;
 
@@ -9,8 +9,8 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.tiwi.vop.racing.dbunit.dao.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.factory.test.BaseSetupTest;
+import be.tiwi.vop.racing.model.User;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class UserDaoTest extends BaseSetupTest {

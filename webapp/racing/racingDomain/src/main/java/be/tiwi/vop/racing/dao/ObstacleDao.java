@@ -1,6 +1,6 @@
 package be.tiwi.vop.racing.dao;
 
-import be.tiwi.vop.racing.pojo.Obstacle;
+import be.tiwi.vop.racing.model.Obstacle;
 import java.util.List;
 
 public interface ObstacleDao {

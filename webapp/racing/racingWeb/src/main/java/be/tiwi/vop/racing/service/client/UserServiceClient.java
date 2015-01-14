@@ -1,6 +1,6 @@
 package be.tiwi.vop.racing.service.client;
 
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.model.User;
 import com.google.gson.Gson;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.Invocation;

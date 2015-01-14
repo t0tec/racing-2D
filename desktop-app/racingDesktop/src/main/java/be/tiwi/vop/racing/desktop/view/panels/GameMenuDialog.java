@@ -23,6 +23,7 @@ import be.tiwi.vop.racing.desktop.view.Internationalization;
 import be.tiwi.vop.racing.desktop.view.MainWindow;
 
 public class GameMenuDialog extends JDialog implements ActionListener, Internationalization {
+
   private static final Logger logger = LoggerFactory.getLogger(GameMenuDialog.class);
 
   public enum State {
@@ -139,63 +140,34 @@ public class GameMenuDialog extends JDialog implements ActionListener, Internati
   public void showCorrectGameMenuDialogState(State state) {
     if (state.equals(State.ENDGAME)) {
       this.setTitle(this.languageBundle.getString("ENDGAMETITLE"));
-      resumeGameButton.setVisible(false);
-      restartGameButton.setVisible(true);
-      quitGameButton.setVisible(true);
-      resumeReplayButton.setVisible(false);
-      restartReplayButton.setVisible(false);
-      quitReplayButton.setVisible(false);
-      resumeTournamentRaceButton.setVisible(false);
-      returnToTournamentMenuButton.setVisible(false);
+      setVisibilityButtons(false, true, true, false, false, false, false, false);
     } else if (state.equals(State.PAUSEGAME)) {
       this.setTitle(this.languageBundle.getString("PAUSEGAMETITLE"));
-      resumeGameButton.setVisible(true);
-      restartGameButton.setVisible(true);
-      quitGameButton.setVisible(true);
-      resumeReplayButton.setVisible(false);
-      restartReplayButton.setVisible(false);
-      quitReplayButton.setVisible(false);
-      resumeTournamentRaceButton.setVisible(false);
-      returnToTournamentMenuButton.setVisible(false);
+      setVisibilityButtons(true, true, true, false, false, false, false, false);
     } else if (state.equals(State.ENDREPLAY)) {
       this.setTitle(this.languageBundle.getString("ENDREPLAYTITLE"));
-      resumeGameButton.setVisible(false);
-      restartGameButton.setVisible(false);
-      quitGameButton.setVisible(false);
-      resumeReplayButton.setVisible(false);
-      restartReplayButton.setVisible(true);
-      quitReplayButton.setVisible(true);
-      resumeTournamentRaceButton.setVisible(false);
-      returnToTournamentMenuButton.setVisible(false);
+      setVisibilityButtons(false, false, false, false, true, true, false, false);
     } else if (state.equals(State.PAUSEREPLAY)) {
-      this.setTitle(this.languageBundle.getString("PAUSEGAMETITLE"));
-      resumeGameButton.setVisible(false);
-      restartGameButton.setVisible(false);
-      quitGameButton.setVisible(false);
-      resumeReplayButton.setVisible(true);
-      restartReplayButton.setVisible(true);
-      quitReplayButton.setVisible(true);
-      resumeTournamentRaceButton.setVisible(false);
-      returnToTournamentMenuButton.setVisible(false);
+      this.setTitle(this.languageBundle.getString("PAUSEREPLAYTITLE"));
+      setVisibilityButtons(false, false, false, true, true, true, false, false);
     } else if (state.equals(State.PAUSETOURNAMENTRACE)) {
-      resumeGameButton.setVisible(false);
-      restartGameButton.setVisible(false);
-      quitGameButton.setVisible(false);
-      resumeReplayButton.setVisible(false);
-      restartReplayButton.setVisible(false);
-      quitReplayButton.setVisible(false);
-      resumeTournamentRaceButton.setVisible(true);
-      returnToTournamentMenuButton.setVisible(false);
+      setVisibilityButtons(false, false, false, false, false, false, true, false);
     } else if (state.equals(State.ENDTOURNAMENTRACE)) {
-      resumeGameButton.setVisible(false);
-      restartGameButton.setVisible(false);
-      quitGameButton.setVisible(false);
-      resumeReplayButton.setVisible(false);
-      restartReplayButton.setVisible(false);
-      quitReplayButton.setVisible(false);
-      resumeTournamentRaceButton.setVisible(false);
-      returnToTournamentMenuButton.setVisible(true);
+      setVisibilityButtons(false, false, false, false, false, false, false, true);
     }
+  }
+
+  private void setVisibilityButtons(boolean resumeGame, boolean restartGame, boolean quitGame,
+                                    boolean resumeReplay, boolean restartReplay, boolean quitReplay,
+                                    boolean resumeTournament, boolean returnToTournament) {
+    resumeGameButton.setVisible(resumeGame);
+    restartGameButton.setVisible(restartGame);
+    quitGameButton.setVisible(quitGame);
+    resumeReplayButton.setVisible(resumeReplay);
+    restartReplayButton.setVisible(restartReplay);
+    quitReplayButton.setVisible(quitReplay);
+    resumeTournamentRaceButton.setVisible(resumeTournament);
+    returnToTournamentMenuButton.setVisible(returnToTournament);
   }
 
   @Override

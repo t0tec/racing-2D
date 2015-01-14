@@ -2,7 +2,7 @@ package be.tiwi.vop.racing.dao;
 
 import java.util.List;
 
-import be.tiwi.vop.racing.pojo.Ghost;
+import be.tiwi.vop.racing.model.Ghost;
 
 public interface GhostDao {
   List<Ghost> getGhosts();

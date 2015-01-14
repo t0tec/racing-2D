@@ -2,7 +2,7 @@ package be.tiwi.vop.racing.dao;
 
 import java.util.List;
 
-import be.tiwi.vop.racing.pojo.Circuit;
+import be.tiwi.vop.racing.model.Circuit;
 
 public interface CircuitDao {
   List<Circuit> getCircuits();

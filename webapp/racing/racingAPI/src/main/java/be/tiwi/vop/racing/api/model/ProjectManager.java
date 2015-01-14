@@ -6,15 +6,15 @@ import java.util.List;
 import be.tiwi.vop.racing.DaoCommand;
 import be.tiwi.vop.racing.DaoFactory;
 import be.tiwi.vop.racing.DaoManager;
-import be.tiwi.vop.racing.pojo.Circuit;
-import be.tiwi.vop.racing.pojo.Event;
-import be.tiwi.vop.racing.pojo.Ghost;
-import be.tiwi.vop.racing.pojo.Obstacle;
-import be.tiwi.vop.racing.pojo.Race;
-import be.tiwi.vop.racing.pojo.Result;
-import be.tiwi.vop.racing.pojo.Tile;
-import be.tiwi.vop.racing.pojo.Tournament;
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.model.Circuit;
+import be.tiwi.vop.racing.model.Event;
+import be.tiwi.vop.racing.model.Ghost;
+import be.tiwi.vop.racing.model.Obstacle;
+import be.tiwi.vop.racing.model.Race;
+import be.tiwi.vop.racing.model.Result;
+import be.tiwi.vop.racing.model.Tile;
+import be.tiwi.vop.racing.model.Tournament;
+import be.tiwi.vop.racing.model.User;
 
 public class ProjectManager {
 

@@ -11,9 +11,9 @@ import javax.ws.rs.core.Response;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.tiwi.vop.racing.pojo.Circuit;
-import be.tiwi.vop.racing.pojo.Obstacle;
-import be.tiwi.vop.racing.pojo.Tile;
+import be.tiwi.vop.racing.model.Circuit;
+import be.tiwi.vop.racing.model.Obstacle;
+import be.tiwi.vop.racing.model.Tile;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;

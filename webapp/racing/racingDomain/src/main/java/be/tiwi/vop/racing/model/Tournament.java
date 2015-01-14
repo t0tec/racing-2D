@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 import java.util.Date;
 
@@ -9,10 +9,24 @@ public class Tournament {
 
   private int id, userId, maxPlayers;
   private Formule formule;
+  private String name;
+  private Date date;
+  private User organiser;
+
+  public Tournament() {
+    this.name = "default tournament";
+  }
+
+  public Tournament(int uId, Formule formule, String name, Date date) {
+    this.formule = formule;
+    this.name = name;
+    this.userId = uId;
+    this.date = date;
+  }
 
   /**
    * Copy constructor
-   * 
+   *
    * @param t
    */
   public Tournament(Tournament t) {
@@ -54,20 +68,6 @@ public class Tournament {
     this.date = date;
   }
 
-  private String name;
-  private Date date;
-
-  public Tournament() {
-    this.name = "default tournament";
-  }
-
-  public Tournament(int uId, Formule formule, String name, Date date) {
-    this.formule = formule;
-    this.name = name;
-    this.userId = uId;
-    this.date = date;
-  }
-
   public int getId() {
     return id;
   }
@@ -84,6 +84,14 @@ public class Tournament {
     return date;
   }
 
+  public User getOrganiser() {
+    return organiser;
+  }
+
+  public void setOrganiser(User organiser) {
+    this.organiser = organiser;
+  }
+
   public enum Formule {
     TOTAL, FASTEST, LONGEST
   }
@@ -93,12 +101,15 @@ public class Tournament {
   }
 
   public boolean equals(Object obj) {
-    if (obj == null)
-      return false;
-    if (obj == this)
+    if (obj == this) {
       return true;
-    if (!(obj instanceof Tournament))
+    }
+    if (obj == null) {
       return false;
+    }
+    if (!(obj instanceof Tournament)) {
+      return false;
+    }
 
     Tournament rhs = (Tournament) obj;
     return new EqualsBuilder().append(id, rhs.id).isEquals();

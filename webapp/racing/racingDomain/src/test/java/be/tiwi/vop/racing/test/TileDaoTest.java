@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.dbunit.dao.test;
+package be.tiwi.vop.racing.test;
 
 import java.sql.SQLSyntaxErrorException;
 import java.util.ArrayList;
@@ -13,9 +13,9 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoCommand;
 import be.tiwi.vop.racing.DaoManager;
-import be.tiwi.vop.racing.dbunit.dao.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.pojo.Tile;
-import be.tiwi.vop.racing.pojo.TileType;
+import be.tiwi.vop.racing.factory.test.BaseSetupTest;
+import be.tiwi.vop.racing.model.Tile;
+import be.tiwi.vop.racing.model.TileType;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class TileDaoTest extends BaseSetupTest {

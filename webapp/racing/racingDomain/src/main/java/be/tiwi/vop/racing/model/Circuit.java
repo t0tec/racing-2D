@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 import java.util.List;
 
@@ -10,6 +10,18 @@ public class Circuit {
   private List<Tile> tiles;
   private int columns;
   private int rows;
+
+  public Circuit() {}
+
+  public Circuit(int columns, int designer, Direction direction, String name, int rows,
+                 List<Tile> tiles) {
+    this.columns = columns;
+    this.designer = designer;
+    this.direction = direction;
+    this.name = name;
+    this.rows = rows;
+    this.tiles = tiles;
+  }
 
   public int getId() {
     return id;

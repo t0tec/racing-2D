@@ -1,10 +1,18 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 public class Obstacle {
 
   private Integer id, tileId;
   private String place;
   private ObstacleType obstacleType;
+
+  public Obstacle() {}
+
+  public Obstacle(ObstacleType obstacleType, String place, Integer tileId) {
+    this.obstacleType = obstacleType;
+    this.place = place;
+    this.tileId = tileId;
+  }
 
   public Integer getId() {
     return id;

@@ -2,7 +2,7 @@ package be.tiwi.vop.racing.dao;
 
 import java.util.List;
 
-import be.tiwi.vop.racing.pojo.Tile;
+import be.tiwi.vop.racing.model.Tile;
 
 public interface TileDao {
   List<Tile> getTilesByCircuitId(Integer circuitid);

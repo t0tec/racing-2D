@@ -1,7 +1,16 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 public class Result {
   private int id, time, lapNumber, raceId, userId;
+
+  public Result() {}
+
+  public Result(int lapNumber, int raceId, int time, int userId) {
+    this.lapNumber = lapNumber;
+    this.raceId = raceId;
+    this.time = time;
+    this.userId = userId;
+  }
 
   public int getId() {
     return id;

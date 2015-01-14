@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.dbunit.dao.factory.test;
+package be.tiwi.vop.racing.factory.test;
 
 import org.junit.BeforeClass;
 import org.slf4j.Logger;

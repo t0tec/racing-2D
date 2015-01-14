@@ -1,8 +1,16 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 public class Race {
 
   private int id, tournamentId, circuitId, laps;
+
+  public Race() {}
+
+  public Race(int circuitId, int laps, int tournamentId) {
+    this.circuitId = circuitId;
+    this.laps = laps;
+    this.tournamentId = tournamentId;
+  }
 
   public int getId() {
     return id;

@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.dbunit.dao.test;
+package be.tiwi.vop.racing.test;
 
 import java.awt.Point;
 import java.util.LinkedHashMap;
@@ -11,9 +11,9 @@ import org.junit.runners.MethodSorters;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.tiwi.vop.racing.dbunit.dao.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.pojo.Ghost;
-import be.tiwi.vop.racing.pojo.Pose;
+import be.tiwi.vop.racing.factory.test.BaseSetupTest;
+import be.tiwi.vop.racing.model.Ghost;
+import be.tiwi.vop.racing.model.Pose;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GhostDaoTest extends BaseSetupTest {

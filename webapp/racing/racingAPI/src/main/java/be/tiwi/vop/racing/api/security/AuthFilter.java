@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.model.User;
 
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
@@ -19,7 +19,7 @@ public class AuthFilter implements ContainerRequestFilter {
 
   /**
    * Apply the filter : check input request, validate or not with user auth
-   * 
+   *
    * @param containerRequest The request from Tomcat server
    */
   @Override

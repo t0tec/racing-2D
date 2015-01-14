@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.tiwi.vop.racing.pojo.Tournament;
+import be.tiwi.vop.racing.model.Tournament;
 import be.tiwi.vop.racing.service.client.TournamentServiceClient;
 
 @WebServlet(name = "CreateTournamentServlet", urlPatterns = {"/CreateTournamentServlet"})
@@ -21,7 +21,7 @@ public class CreateTournamentServlet extends HttpServlet {
 
   /**
    * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-   * 
+   *
    * @param request servlet request
    * @param response servlet response
    * @throws ServletException if a servlet-specific error occurs

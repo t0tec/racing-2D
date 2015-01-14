@@ -125,7 +125,6 @@ public class TournamentMenuPanel extends JPanel implements ActionListener, Inter
         }
         if (raceList.getSelectedValuesList().size() > 0) {
           startTournamentButton.setEnabled(true);
-          logger.info("{}", raceList.getSelectedValue().getId());
 
           List<Result> userResults =
               new TournamentRestController().getRaceResultsFromCurrentUser(tournamentTableModel
@@ -279,7 +278,7 @@ public class TournamentMenuPanel extends JPanel implements ActionListener, Inter
 
     column = new TableColumn();
     column.setModelIndex(ResultsTableModel.USER_ID_COLUMN);
-    column.setHeaderValue(this.languageBundle.getString("RESULTSHEADERRESULTS"));
+    column.setHeaderValue(this.languageBundle.getString("RESULTSHEADERPLAYERID"));
     column.setPreferredWidth(50);
     columnModel.addColumn(column);
 

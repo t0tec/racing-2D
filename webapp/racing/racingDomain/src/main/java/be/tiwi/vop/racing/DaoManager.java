@@ -23,7 +23,7 @@ import be.tiwi.vop.racing.dao.impl.ResultDaoJdbcImpl;
 import be.tiwi.vop.racing.dao.impl.TileDaoJdbcImpl;
 import be.tiwi.vop.racing.dao.impl.TournamentDaoJdbcImpl;
 import be.tiwi.vop.racing.dao.impl.UserDaoJdbcImpl;
-import be.tiwi.vop.racing.pojo.Event;
+import be.tiwi.vop.racing.model.Event;
 
 public class DaoManager {
 

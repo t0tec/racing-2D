@@ -17,7 +17,7 @@ import com.google.gson.Gson;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
 import be.tiwi.vop.racing.api.transformer.FeedTransformer;
-import be.tiwi.vop.racing.pojo.Ghost;
+import be.tiwi.vop.racing.model.Ghost;
 
 @Component
 @Path("ghosts")

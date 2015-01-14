@@ -7,7 +7,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.model.User;
 import be.tiwi.vop.racing.api.transformer.FeedTransformer;
 
 import javax.ws.rs.FormParam;

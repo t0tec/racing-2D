@@ -1,13 +1,22 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 public class User {
 
-  private Integer id = -1;
-  private String username = "";
-  private String password = "";
-  private String email = "";
-  private String fullName = "";
-  private boolean isPublic = true;
+  private Integer id;
+  private String username;
+  private String password;
+  private String email;
+  private String fullName;
+  private boolean isPublic;
+
+  public User() {}
+
+  public User(String username, String email, String fullName, boolean isPublic) {
+    this.username = username;
+    this.email = email;
+    this.fullName = fullName;
+    this.isPublic = isPublic;
+  }
 
   public Integer getId() {
     return id;

@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 public enum TileType {
   EARTH(1), START(2), STRAIGHT(3), STRAIGHT_UP(4), L_TURN(5), L_TURN_90(6), L_TURN_180(7), L_TURN_270(

@@ -12,8 +12,8 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.TileDao;
-import be.tiwi.vop.racing.pojo.Tile;
-import be.tiwi.vop.racing.pojo.TileType;
+import be.tiwi.vop.racing.model.Tile;
+import be.tiwi.vop.racing.model.TileType;
 
 public class TileDaoJdbcImpl implements TileDao {
 

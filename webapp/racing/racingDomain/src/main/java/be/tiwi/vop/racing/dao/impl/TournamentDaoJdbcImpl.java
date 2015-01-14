@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.TournamentDao;
-import be.tiwi.vop.racing.pojo.Tournament;
-import be.tiwi.vop.racing.pojo.Tournament.Formule;
-import be.tiwi.vop.racing.pojo.User;
+import be.tiwi.vop.racing.model.Tournament;
+import be.tiwi.vop.racing.model.Tournament.Formule;
+import be.tiwi.vop.racing.model.User;
 
 public class TournamentDaoJdbcImpl implements TournamentDao {
 
@@ -33,7 +33,7 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
     try {
       ps =
           this.connection
-              .prepareStatement("SELECT * FROM tournaments WHERE date >= now() ORDER BY date ASC LIMIT ?, ?");
+              .prepareStatement("SELECT t.*, u.username FROM tournaments t INNER JOIN users u ON u.id = t.user_id WHERE date >= now() ORDER BY date ASC LIMIT ?, ?");
       ps.setInt(1, limit1);
       ps.setInt(2, limit2);
       rs = ps.executeQuery();
@@ -59,7 +59,7 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
     try {
       ps =
           this.connection
-              .prepareStatement("SELECT * FROM tournaments WHERE date >= now() ORDER BY date ASC");
+              .prepareStatement("SELECT t.*, u.username FROM tournaments t INNER JOIN users u ON u.id = t.user_id WHERE date >= now() ORDER BY date ASC");
 
       rs = ps.executeQuery();
 
@@ -82,7 +82,7 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM tournaments WHERE id = ?");
+      ps = this.connection.prepareStatement("SELECT t.*, u.username FROM tournaments t INNER JOIN users u ON u.id = t.user_id WHERE id = ?");
       ps.setInt(1, id);
 
       rs = ps.executeQuery();
@@ -105,7 +105,7 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM tournaments WHERE name = ?");
+      ps = this.connection.prepareStatement("SELECT t.*, u.username FROM tournaments t INNER JOIN users u ON u.id = t.user_id WHERE name = ?");
       ps.setString(1, name);
 
       rs = ps.executeQuery();
@@ -172,6 +172,11 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
       tournament.setFormule(Formule.valueOf(rs.getString("formule")));
       tournament.setMaxPlayers(rs.getInt("max_players"));
       tournament.setUserId(rs.getInt("user_id"));
+
+      User organiser = new User();
+      organiser.setId(rs.getInt("user_id"));
+      organiser.setUsername(rs.getString("username"));
+      tournament.setOrganiser(organiser);
     } catch (SQLException sqlEx) {
       sqlEx.printStackTrace();
     }
@@ -210,7 +215,7 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
     try {
       ps =
           this.connection
-              .prepareStatement("SELECT * FROM tournaments t INNER JOIN participants p ON t.id = p.tournament_id WHERE p.user_id = ?");
+              .prepareStatement("SELECT t.*, u.username FROM tournaments t INNER JOIN users u on u.id = t.user_id INNER JOIN participants p ON t.id = p.tournament_id WHERE p.user_id = ?");
       ps.setInt(1, id);
       rs = ps.executeQuery();
 

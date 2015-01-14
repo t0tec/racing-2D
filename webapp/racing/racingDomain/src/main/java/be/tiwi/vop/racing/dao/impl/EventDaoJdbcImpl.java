@@ -12,7 +12,7 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.EventDao;
-import be.tiwi.vop.racing.pojo.Event;
+import be.tiwi.vop.racing.model.Event;
 
 public class EventDaoJdbcImpl implements EventDao {
 

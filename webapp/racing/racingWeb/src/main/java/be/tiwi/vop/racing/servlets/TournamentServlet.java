@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import be.tiwi.vop.racing.pojo.Tournament;
+import be.tiwi.vop.racing.model.Tournament;
 import be.tiwi.vop.racing.service.client.TournamentServiceClient;
 
 import com.google.gson.Gson;

@@ -1,4 +1,4 @@
-package be.tiwi.vop.racing.pojo;
+package be.tiwi.vop.racing.model;
 
 public enum ObstacleType {
   EGGPLANT("EGGPLANT"), MELON("MELON"), STRAWBERRY("STRAWBERRY"), PADDO("PADDO");
