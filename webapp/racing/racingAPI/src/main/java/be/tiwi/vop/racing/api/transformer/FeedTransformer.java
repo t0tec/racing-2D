@@ -6,15 +6,15 @@ import java.util.List;
 
 import org.apache.commons.codec.digest.DigestUtils;
 
-import be.tiwi.vop.racing.model.Circuit;
-import be.tiwi.vop.racing.model.Event;
-import be.tiwi.vop.racing.model.Ghost;
-import be.tiwi.vop.racing.model.Obstacle;
-import be.tiwi.vop.racing.model.Race;
-import be.tiwi.vop.racing.model.Result;
-import be.tiwi.vop.racing.model.Tile;
-import be.tiwi.vop.racing.model.Tournament;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.Circuit;
+import be.tiwi.vop.racing.core.model.Event;
+import be.tiwi.vop.racing.core.model.Ghost;
+import be.tiwi.vop.racing.core.model.Obstacle;
+import be.tiwi.vop.racing.core.model.Race;
+import be.tiwi.vop.racing.core.model.Result;
+import be.tiwi.vop.racing.core.model.Tile;
+import be.tiwi.vop.racing.core.model.Tournament;
+import be.tiwi.vop.racing.core.model.User;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

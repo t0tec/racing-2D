@@ -18,8 +18,8 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.GhostDao;
-import be.tiwi.vop.racing.model.Ghost;
-import be.tiwi.vop.racing.model.Pose;
+import be.tiwi.vop.racing.core.model.Ghost;
+import be.tiwi.vop.racing.core.model.Pose;
 
 
 public class GhostDaoJdbcImpl implements GhostDao {

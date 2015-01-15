@@ -55,7 +55,7 @@
 
 	<modules>
 		<module>racingDomain</module>
-		<module>racingUtil</module>
+		<module>racingCore</module>
 		<module>racingConfig</module>
 		<module>racingAPI</module>
 		<module>racingWeb</module>

@@ -2,7 +2,7 @@ package be.tiwi.vop.racing.dao;
 
 import java.util.List;
 
-import be.tiwi.vop.racing.model.Result;
+import be.tiwi.vop.racing.core.model.Result;
 
 public interface ResultDao {
   List<Result> getResultsByRaceIdAndUserId(int raceId, int userId);

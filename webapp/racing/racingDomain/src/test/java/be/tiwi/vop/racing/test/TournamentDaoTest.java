@@ -12,9 +12,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.model.Tournament;
-import be.tiwi.vop.racing.model.Tournament.Formule;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.Tournament;
+import be.tiwi.vop.racing.core.model.Tournament.Formule;
+import be.tiwi.vop.racing.core.model.User;
 
 public class TournamentDaoTest extends BaseSetupTest {
   private static final Logger logger = LoggerFactory.getLogger(TournamentDaoTest.class);

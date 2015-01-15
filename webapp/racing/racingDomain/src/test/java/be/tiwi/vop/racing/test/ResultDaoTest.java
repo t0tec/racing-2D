@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 import be.tiwi.vop.racing.DaoCommand;
 import be.tiwi.vop.racing.DaoManager;
 import be.tiwi.vop.racing.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.model.Result;
+import be.tiwi.vop.racing.core.model.Result;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class ResultDaoTest extends BaseSetupTest {

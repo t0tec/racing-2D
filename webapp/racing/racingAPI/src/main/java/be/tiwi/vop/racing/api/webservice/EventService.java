@@ -14,7 +14,7 @@ import org.springframework.stereotype.Component;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
 import be.tiwi.vop.racing.api.transformer.FeedTransformer;
-import be.tiwi.vop.racing.model.Event;
+import be.tiwi.vop.racing.core.model.Event;
 
 @Component
 @Path("events")

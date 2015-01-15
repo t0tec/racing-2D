@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import be.tiwi.vop.racing.model.Tournament;
+import be.tiwi.vop.racing.core.model.Tournament;
 import be.tiwi.vop.racing.service.client.TournamentServiceClient;
 
 @WebServlet(name = "CreateTournamentServlet", urlPatterns = {"/CreateTournamentServlet"})

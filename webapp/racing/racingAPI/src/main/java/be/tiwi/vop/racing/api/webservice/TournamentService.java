@@ -19,11 +19,11 @@ import org.springframework.stereotype.Component;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
 import be.tiwi.vop.racing.api.transformer.FeedTransformer;
-import be.tiwi.vop.racing.model.Race;
-import be.tiwi.vop.racing.model.Result;
-import be.tiwi.vop.racing.model.Tournament;
-import be.tiwi.vop.racing.model.Tournament.Formule;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.Race;
+import be.tiwi.vop.racing.core.model.Result;
+import be.tiwi.vop.racing.core.model.Tournament;
+import be.tiwi.vop.racing.core.model.Tournament.Formule;
+import be.tiwi.vop.racing.core.model.User;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;

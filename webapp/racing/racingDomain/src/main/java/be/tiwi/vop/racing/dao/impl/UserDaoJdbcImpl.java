@@ -11,7 +11,7 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.UserDao;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.User;
 
 public class UserDaoJdbcImpl implements UserDao {
   private Connection connection;

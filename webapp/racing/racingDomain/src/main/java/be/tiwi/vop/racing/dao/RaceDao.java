@@ -1,6 +1,6 @@
 package be.tiwi.vop.racing.dao;
 
-import be.tiwi.vop.racing.model.Race;
+import be.tiwi.vop.racing.core.model.Race;
 import java.util.List;
 
 public interface RaceDao {

@@ -14,8 +14,8 @@ import org.slf4j.LoggerFactory;
 import be.tiwi.vop.racing.DaoCommand;
 import be.tiwi.vop.racing.DaoManager;
 import be.tiwi.vop.racing.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.model.Tile;
-import be.tiwi.vop.racing.model.TileType;
+import be.tiwi.vop.racing.core.model.Tile;
+import be.tiwi.vop.racing.core.model.TileType;
 
 @FixMethodOrder(MethodSorters.JVM)
 public class TileDaoTest extends BaseSetupTest {

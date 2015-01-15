@@ -1,6 +1,6 @@
 package be.tiwi.vop.racing.dao;
 
-import be.tiwi.vop.racing.model.Event;
+import be.tiwi.vop.racing.core.model.Event;
 import java.util.List;
 
 public interface EventDao {

@@ -12,9 +12,9 @@ import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.DaoUtility;
 import be.tiwi.vop.racing.dao.TournamentDao;
-import be.tiwi.vop.racing.model.Tournament;
-import be.tiwi.vop.racing.model.Tournament.Formule;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.Tournament;
+import be.tiwi.vop.racing.core.model.Tournament.Formule;
+import be.tiwi.vop.racing.core.model.User;
 
 public class TournamentDaoJdbcImpl implements TournamentDao {
 
@@ -190,7 +190,7 @@ public class TournamentDaoJdbcImpl implements TournamentDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM tournaments WHERE user_id = ?");
+      ps = this.connection.prepareStatement("SELECT t.*, u.username FROM tournaments t INNER JOIN users u ON u.id = t.user_id WHERE user_id = ?");
       ps.setInt(1, id);
       rs = ps.executeQuery();
 

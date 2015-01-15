@@ -12,8 +12,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.factory.test.BaseSetupTest;
-import be.tiwi.vop.racing.model.Ghost;
-import be.tiwi.vop.racing.model.Pose;
+import be.tiwi.vop.racing.core.model.Ghost;
+import be.tiwi.vop.racing.core.model.Pose;
 
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class GhostDaoTest extends BaseSetupTest {

@@ -2,8 +2,8 @@ package be.tiwi.vop.racing.dao;
 
 import java.util.List;
 
-import be.tiwi.vop.racing.model.Tournament;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.Tournament;
+import be.tiwi.vop.racing.core.model.User;
 
 public interface TournamentDao {
   List<Tournament> getUpcomingTournaments(int limit1, int limit2);

@@ -8,7 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import be.tiwi.vop.racing.api.model.ProjectManager;
-import be.tiwi.vop.racing.model.User;
+import be.tiwi.vop.racing.core.model.User;
 
 import com.sun.jersey.spi.container.ContainerRequest;
 import com.sun.jersey.spi.container.ContainerRequestFilter;
