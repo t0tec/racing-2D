@@ -71,7 +71,7 @@
 					<artifactId>tomcat-maven-plugin</artifactId>
 					<version>2.2</version>
 					<configuration>
-						<url>http://${vop.env}..vop.tiwi.be/manager/text</url>
+						<url>http://${vop.env}.xyz.vop.tiwi.be/manager/text</url>
 						<server>vop</server>
 						<path>/</path>
 					</configuration>
