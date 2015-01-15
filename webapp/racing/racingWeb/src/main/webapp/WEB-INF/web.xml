@@ -6,39 +6,39 @@
 	<display-name>Servlet 3.0 Web Application</display-name>
 	<servlet>
 		<servlet-name>LoginServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.LoginServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.LoginServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>LogoutServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.LogoutServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.LogoutServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>RegisterServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.RegisterServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.RegisterServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>GetUserServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.GetUserServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.GetUserServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>UpdateUserServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.UpdateUserServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.UpdateUserServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>CircuitServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.CircuitServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.CircuitServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>CreateTournamentServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.CreateTournamentServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.CreateTournamentServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>TournamentServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.TournamentServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.TournamentServlet</servlet-class>
 	</servlet>
 	<servlet>
 		<servlet-name>LanguageSelectorServlet</servlet-name>
-		<servlet-class>be.tiwi.vop.racing.servlets.LanguageSelectorServlet</servlet-class>
+		<servlet-class>be.tiwi.vop.racing.web.servlets.LanguageSelectorServlet</servlet-class>
 	</servlet>
 	<servlet-mapping>
 		<servlet-name>LoginServlet</servlet-name>
@@ -94,7 +94,7 @@
 	</servlet-mapping>
 	<filter>
 		<filter-name>SessionFilter</filter-name>
-		<filter-class>be.tiwi.vop.racing.servlets.filters.SessionFilter</filter-class>
+		<filter-class>be.tiwi.vop.racing.web.servlets.filters.SessionFilter</filter-class>
 		<init-param>
 			<param-name>avoid-urls</param-name>
 			<param-value>/index.html,/index.jsp,/register.jsp,/login.do,/logout.do,/createUser.do,/changeLanguage.do</param-value>

@@ -3,9 +3,6 @@ package be.tiwi.vop.racing.api.model;
 import java.util.ArrayList;
 import java.util.List;
 
-import be.tiwi.vop.racing.DaoCommand;
-import be.tiwi.vop.racing.DaoFactory;
-import be.tiwi.vop.racing.DaoManager;
 import be.tiwi.vop.racing.core.model.Circuit;
 import be.tiwi.vop.racing.core.model.Event;
 import be.tiwi.vop.racing.core.model.Ghost;
@@ -15,6 +12,9 @@ import be.tiwi.vop.racing.core.model.Result;
 import be.tiwi.vop.racing.core.model.Tile;
 import be.tiwi.vop.racing.core.model.Tournament;
 import be.tiwi.vop.racing.core.model.User;
+import be.tiwi.vop.racing.domain.DaoCommand;
+import be.tiwi.vop.racing.domain.DaoFactory;
+import be.tiwi.vop.racing.domain.DaoManager;
 
 public class ProjectManager {
 

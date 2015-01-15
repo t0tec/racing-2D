@@ -7,10 +7,10 @@
        					   http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd
        					   http://www.springframework.org/schema/context
        					   http://www.springframework.org/schema/context/spring-context.xsd
-       					   http://www.springframework.org/schema/jdbc 
+       					   http://www.springframework.org/schema/jdbc
      					   http://www.springframework.org/schema/jdbc/spring-jdbc.xsd">
 
-	<context:component-scan base-package="be.tiwi.vop.racing" />
+	<context:component-scan base-package="be.tiwi.vop.racing.domain" />
 	<context:annotation-config />
 
 	<!-- datasource properties to set the HikariConfig properties -->
@@ -21,7 +21,7 @@
 
 	<beans profile="test">
 		<!-- hsqldbDataSource bean for testing purposes -->
-		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+		<bean id="manager" class="be.tiwi.vop.racing.domain.DaoManager"
 			autowire="constructor" />
 
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -44,7 +44,7 @@
 			</constructor-arg>
 		</bean>
 
-		<!-- execute a script to create tables after creation of bean for in-memory 
+		<!-- execute a script to create tables after creation of bean for in-memory
 			HSQLDB -->
 		<jdbc:embedded-database id="dataSource" type="HSQL">
 			<jdbc:script location="classpath:schema.sql" />
@@ -54,7 +54,7 @@
 
 	<beans profile="development">
 		<!-- developmentDataSource bean for local development purposes -->
-		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+		<bean id="manager" class="be.tiwi.vop.racing.domain.DaoManager"
 			autowire="constructor" />
 
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -83,7 +83,7 @@
 
 	<beans profile="staging">
 		<!-- dataSource bean for staging purposes -->
-		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+		<bean id="manager" class="be.tiwi.vop.racing.domain.DaoManager"
 			autowire="constructor" />
 
 		<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"
@@ -113,7 +113,7 @@
 	</beans>
 
 	<beans profile="release">
-		<bean id="manager" class="be.tiwi.vop.racing.DaoManager"
+		<bean id="manager" class="be.tiwi.vop.racing.domain.DaoManager"
 			autowire="constructor" />
 
 		<!-- dataSource bean for release purposes -->
