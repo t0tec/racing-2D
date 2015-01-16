@@ -60,7 +60,7 @@ public class CircuitService {
   @Produces("application/json")
   @GET
   @Path("user/{designerId}")
-  public String getCircuitByDesigner(@PathParam("designerId") String designerId) {
+  public String getCircuitsByDesigner(@PathParam("designerId") String designerId) {
     logger.info("Getting circuits by designer id: {}", designerId);
     ProjectManager pm = new ProjectManager();
 
@@ -86,6 +86,10 @@ public class CircuitService {
     Circuit circuit = pm.getCircuitInfoById(Integer.parseInt(id));
     ArrayList<Tile> tiles = (ArrayList<Tile>) pm.getTilesByCircuitId(circuit.getId());
     circuit.setTiles(tiles);
+    ArrayList<Obstacle>
+        obstacles =
+        (ArrayList<Obstacle>) pm.getObstaclesByCircuitId(circuit.getId());
+    circuit.setObstacles(obstacles);
 
     return FeedTransformer.getCircuit(circuit);
   }

@@ -12,7 +12,8 @@
 	<artifactId>racingWeb</artifactId>
 	<version>1</version>
 	<packaging>war</packaging>
-	<name>racingWeb Maven Webapp</name>
+
+	<name>racingWeb</name>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

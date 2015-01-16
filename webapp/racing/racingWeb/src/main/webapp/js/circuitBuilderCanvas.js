@@ -10,7 +10,7 @@ var prevTile, prevPrevTile;
 var circuitId, originalTiles;
 var checks = [], originalChecks;
 var startTile = null;
-var obstacles, originalObstacals;
+var obstacles;
 var obstacleTypes = ['MELON', 'STRAWBERRY', 'PADDO', 'EGGPLANT'];
 
 $(document).ready(function() {
@@ -264,16 +264,13 @@ function checkTiles(newCheck, saveMode) {
 
 function loadCircuit() {
     var url = "circuit.do?action=getCircuit&id=" + circuitId;
-    var url2 = "circuit.do?action=getTiles&id=" + circuitId;
-    var url3 = "circuit.do?action=getObstacles&id=" + circuitId;
     var name, direction;
-    var circuit = $.ajax({
-        url: url
-        , type: 'GET'
-        , contentType: 'application/json'
-        , dataType: 'json'
-    }),
-    tiles = circuit.then(function(data) {
+    $.ajax({
+         url: url
+         , type: 'GET'
+         , contentType: 'application/json'
+         , dataType: 'json'
+     }).then(function (data) {
         circuitId = parseInt(circuitId);
         builderCols = data.columns;
         builderRows = data.rows;
@@ -281,14 +278,8 @@ function loadCircuit() {
         $("#inputCols").val(builderCols);
         name = data.name;
         direction = data.direction;
-        return $.ajax({
-            url: url2
-            , type: 'GET'
-            , contentType: 'application/json'
-            , dataType: 'json'
-        });
-    }).then(function(data) {
-        originalTiles = data;
+        originalTiles = data.tiles;
+
         $("#saveCircuitButton").removeAttr('disabled');
         $("#circuitName").attr("placeholder", name);
         $("#circuitName").val(name);
@@ -296,20 +287,16 @@ function loadCircuit() {
             $('#direction .btn').first().removeClass("active");
             $('#direction .btn').last().addClass("active");
         }
-        return $.ajax({
-            url: url3
-            , type: 'GET'
-            , contentType: 'application/json'
-            , dataType: 'json'
-        });
-    }).then(function(data) {
 
-        originalObstacles = data;
+        originalObstacles = data.obstacles;
+
         generateBuilder();
+        // console.log("CHECKS");
+        // console.log(checks);
         originalChecks = checks.slice();
-    });
-
+    })
 }
+
 $('#generateCanvas').click(function(e) {
     e.preventDefault();
     checks = [];
@@ -423,7 +410,8 @@ $("#saveCircuit").submit(function(event) {
                 }
 
                 if (obstacleResult.length === 1) {
-                    // console.log(obstacleResult[0].place, obstacle_data['place'], obstacleResult[0].obstacleType, obstacle_data['type']);
+                    // console.log(obstacleResult[0].place, obstacle_data['place'],
+                    // obstacleResult[0].obstacleType, obstacle_data['type']);
                     var index;
                     $.grep(originalObstacles, function(e, i) {
                         if (e.id === obstacle_data['id']) {

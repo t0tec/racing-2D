@@ -6,11 +6,11 @@ var builder = $('#builder');
 var tileTypes = ['', 'EARTH', 'START', 'STRAIGHT', 'STRAIGHT_UP', 'L_TURN', 'L_TURN_90', 'L_TURN_180', 'L_TURN_270', 'CROSS'];
 var spriteValues = [0, 0, 110, 220, 330, 440, 550, 660, 770, 880];
 var drawOnBuilder = false, mouseUp = false, mouseDown = false;
-var prevTile, prevPrevTile;
+var prevTile;
 var circuitId, originalTiles;
 var checks = [], originalChecks;
 var startTile = null;
-var obstacles, originalObstacals;
+var obstacles;
 var obstacleTypes = ['MELON', 'STRAWBERRY', 'PADDO', 'EGGPLANT'];
 
 $(document).ready(function() {
@@ -246,16 +246,13 @@ function checkTiles(newCheck, saveMode) {
 
 function loadCircuit() {
     var url = "circuit.do?action=getCircuit&id=" + circuitId;
-    var url2 = "circuit.do?action=getTiles&id=" + circuitId;
-    var url3 = "circuit.do?action=getObstacles&id=" + circuitId;
     var name, direction;
-    var circuit = $.ajax({
+    $.ajax({
         url: url
         , type: 'GET'
         , contentType: 'application/json'
         , dataType: 'json'
-    }),
-    tiles = circuit.then(function(data) {
+    }).then(function(data) {
         circuitId = parseInt(circuitId);
         builderCols = data.columns;
         builderRows = data.rows;
@@ -263,38 +260,26 @@ function loadCircuit() {
         $("#inputCols").val(builderCols);
         name = data.name;
         direction = data.direction;
-        return $.ajax({
-            url: url2
-            , type: 'GET'
-            , contentType: 'application/json'
-            , dataType: 'json'
-        });
-    }).then(function(data) {
-        originalTiles = data;
-        // console.log(data);
+        originalTiles = data.tiles;
+
         $("#saveCircuitButton").removeAttr('disabled');
         $("#circuitName").attr("placeholder", name);
         $("#circuitName").val(name);
+
         if (direction === "RIGHT") {
             $('#direction .btn').first().removeClass("active");
             $('#direction .btn').last().addClass("active");
         }
-        return $.ajax({
-            url: url3
-            , type: 'GET'
-            , contentType: 'application/json'
-            , dataType: 'json'
-        });
-    }).then(function(data) {
 
-        originalObstacles = data;
+        originalObstacles = data.obstacles;
+
         generateBuilder();
         // console.log("CHECKS");
         // console.log(checks);
         originalChecks = checks.slice();
-    });
-
+    })
 }
+
 $('#generateCanvas').click(function(e) {
     e.preventDefault();
     checks = [];

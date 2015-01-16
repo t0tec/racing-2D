@@ -68,43 +68,9 @@ public class CircuitServiceClient extends AbstractServiceClient {
 
   }
 
-  public List<Tile> getTilesByCircuitId(int circuitId) {
-
-    WebTarget circuitsWebTarget = webTarget.path(circuitId + "/tiles/");
-    logger.info(circuitsWebTarget.getUri().toString());
-
-    Response resp = circuitsWebTarget.request(MediaType.APPLICATION_JSON).get();
-
-    if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
-      logger.info("request for circuits OK");
-      return new Gson().fromJson(resp.readEntity(String.class),
-          new TypeToken<List<Tile>>() {}.getType());
-    } else {
-      return null;
-    }
-
-  }
-
-  public List<Obstacle> getObstaclesByCircuitId(int circuitId) {
-
-    WebTarget circuitsWebTarget = webTarget.path(circuitId + "/obstacles/");
-    logger.info(circuitsWebTarget.getUri().toString());
-
-    Response resp = circuitsWebTarget.request(MediaType.APPLICATION_JSON).get();
-
-    if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
-      logger.info("request for obstacles OK");
-      return new Gson().fromJson(resp.readEntity(String.class),
-          new TypeToken<List<Obstacle>>() {}.getType());
-    } else {
-      return null;
-    }
-
-  }
-
   public Circuit getCircuitByCircuitId(int circuitId) {
 
-    WebTarget circuitsWebTarget = webTarget.path(circuitId + "/info");
+    WebTarget circuitsWebTarget = webTarget.path(Integer.toString(circuitId));
     logger.info(circuitsWebTarget.getUri().toString());
 
     Response resp = circuitsWebTarget.request(MediaType.APPLICATION_JSON).get();

@@ -46,10 +46,6 @@ public class CircuitServlet extends HttpServlet {
     String action = request.getParameter("action");
     if (action.equals("getCircuit")) {
       getCircuitById(request, response);
-    } else if (action.equals("getTiles")) {
-      getTilesByCircuitId(request, response);
-    } else if (action.equals("getObstacles")) {
-      getObstaclesByCircuitId(request, response);
     } else if (action.equals("favorite")) {
       favoriteCircuit(request, response);
     } else if (action.equals("unfavorite")) {
@@ -154,38 +150,6 @@ public class CircuitServlet extends HttpServlet {
     response.setContentType("application/json");
     response.setCharacterEncoding("UTF-8");
     String json = new Gson().toJson(c);
-    response.getWriter().write(json);
-  }
-
-  protected void getTilesByCircuitId(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    // get parameters
-    String authString = request.getSession().getAttribute("authString").toString();
-    int circuitId = Integer.parseInt(request.getParameter("id"));
-    // api call
-    CircuitServiceClient client = new CircuitServiceClient(authString);
-    List<Tile> t = client.getTilesByCircuitId(circuitId);
-
-    // write response
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    String json = new Gson().toJson(t);
-    response.getWriter().write(json);
-  }
-
-  protected void getObstaclesByCircuitId(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    // get parameters
-    String authString = request.getSession().getAttribute("authString").toString();
-    int circuitId = Integer.parseInt(request.getParameter("id"));
-    // api call
-    CircuitServiceClient client = new CircuitServiceClient(authString);
-    List<Obstacle> t = client.getObstaclesByCircuitId(circuitId);
-
-    // write response
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    String json = new Gson().toJson(t);
     response.getWriter().write(json);
   }
 
