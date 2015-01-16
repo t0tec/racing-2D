@@ -28,7 +28,7 @@ public class ReplayGamePlayPanel extends JPanel implements ActionListener, Inter
   private JButton pauseReplayButton;
 
   private Timer gameTimer;
-  private final int DELAY = 20;
+  private static final int DELAY = 20; // 20ms =~ 60fps
   private int gameTime;
 
   public ReplayGamePlayPanel(MainWindow window, Circuit circuit) {

@@ -1,6 +1,7 @@
 package be.tiwi.vop.racing.desktop.restclient;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
 
 import javax.ws.rs.client.ClientRequestContext;
 import javax.ws.rs.client.ClientRequestFilter;
@@ -23,8 +24,8 @@ public class BasicAuthFeature implements ClientRequestFilter {
   }
 
   private String getBase64(String username, String password) {
-    String original = username + ":" + password;
-    return DatatypeConverter.printBase64Binary(original.getBytes());
+    byte[] val = (username + ":" + password).getBytes(Charset.forName("UTF-8"));
+    return DatatypeConverter.printBase64Binary(val);
   }
 
   public String getAuthString() {

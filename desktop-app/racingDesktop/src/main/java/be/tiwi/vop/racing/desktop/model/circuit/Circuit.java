@@ -21,7 +21,7 @@ public class Circuit {
     this.obstacles = obstacles;
   }
 
-  private final int TILESIZE = 100;
+  private static final int TILESIZE = 100;
   private int lapCount;
 
   public int getId() {

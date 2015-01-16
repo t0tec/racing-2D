@@ -157,7 +157,7 @@ public class SettingsPanel extends JPanel implements ActionListener, Internation
 
     String oldLookAndFeel = this.lookAndFeel;
 
-    if (oldLookAndFeel != lookAndFeel) {
+    if (!oldLookAndFeel.equals(lookAndFeel)) {
       UIManager.setLookAndFeel(lookAndFeel);
       this.lookAndFeel = lookAndFeel;
       updateLookAndFeel();
@@ -250,7 +250,6 @@ public class SettingsPanel extends JPanel implements ActionListener, Internation
     private String className;
 
     public LookAndFeel(String name, String className) {
-      super();
       this.name = name;
       this.className = className;
     }
@@ -278,11 +277,20 @@ public class SettingsPanel extends JPanel implements ActionListener, Internation
       if (this == o) {
         return true;
       }
-      if (o == null) {
+      if (!(o instanceof LookAndFeel)) {
         return false;
       }
 
-      return this.className.equals(((LookAndFeel) o).className);
+      LookAndFeel that = (LookAndFeel) o;
+
+      if (!className.equals(that.className)) {
+        return false;
+      }
+      if (!name.equals(that.name)) {
+        return false;
+      }
+
+      return true;
     }
 
     private SettingsPanel getOuterType() {

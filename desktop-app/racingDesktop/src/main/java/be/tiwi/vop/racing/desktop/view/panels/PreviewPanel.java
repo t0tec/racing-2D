@@ -175,8 +175,7 @@ public class PreviewPanel extends JPanel {
         }
 
         scaledImage =
-            image.getScaledInstance(new Float(imageWidth).intValue(),
-                new Float(imageHeight).intValue(), Image.SCALE_DEFAULT);
+            image.getScaledInstance((int) imageWidth, (int) imageHeight, Image.SCALE_DEFAULT);
 
       } else {
         scaledImage = image;

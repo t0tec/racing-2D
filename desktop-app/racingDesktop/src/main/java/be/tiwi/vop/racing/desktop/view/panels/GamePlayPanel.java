@@ -29,7 +29,7 @@ public class GamePlayPanel extends JPanel implements ActionListener, Internation
   private JButton pauseGameButton;
 
   private Timer gameTimer;
-  private final int DELAY = 20; // 20ms =~ 60fps
+  private static final int DELAY = 20; // 20ms =~ 60fps
   private int gameTime;
   private int lapTime;
 

@@ -30,7 +30,7 @@ public class ProjectManager {
     }
   }
 
-  public ArrayList<User> GetUsers() {
+  public ArrayList<User> getUsers() {
     return (ArrayList<User>) daoManager.getUserDao().getUsers();
   }
 

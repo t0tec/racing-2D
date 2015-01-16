@@ -30,7 +30,7 @@ public class UserService {
     try {
       ArrayList<User> feedData = null;
       ProjectManager projectManager = new ProjectManager();
-      feedData = projectManager.GetUsers();
+      feedData = projectManager.getUsers();
       feeds = FeedTransformer.userFeed(feedData);
       return feeds;
     } catch (Exception e) {

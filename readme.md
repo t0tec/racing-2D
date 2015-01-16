@@ -26,4 +26,4 @@ Recently added after finishing project:
 * uml: All UML diagrams & other designs will go here
 * webapp: This is the main web part of the project, under this directory the Domain, REST API and Web Client part of the Racing project is stored
 
-For documentation, howto's... there is a [wiki](https://github.com/T0tec/racing-2D/wiki) page.
+For documentation, howto's... there is a [wiki](https://github.com/t0tec/racing-2D/wiki) page.
