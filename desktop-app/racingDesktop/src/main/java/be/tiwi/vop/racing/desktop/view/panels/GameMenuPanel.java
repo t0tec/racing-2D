@@ -94,8 +94,6 @@ public class GameMenuPanel extends CircuitMenu {
       logger.info("Selected ghosts size: " + ghostList.getSelectedValuesList().size());
       List<Ghost> ghosts = ghostList.getSelectedValuesList();
       Circuit circuit = new CircuitRestController().loadCircuit(currentCircuit.getId());
-      circuit.setObstacles(new CircuitRestController().loadObstaclesByCircuitId(currentCircuit
-          .getId()));
       circuit.setLapCount(1);
 
       this.window.showGamePanel(circuit, ghosts);

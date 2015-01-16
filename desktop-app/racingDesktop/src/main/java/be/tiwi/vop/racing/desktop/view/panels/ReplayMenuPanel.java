@@ -100,8 +100,6 @@ public class ReplayMenuPanel extends CircuitMenu {
       logger.info("Selected ghosts size: " + ghostList.getSelectedValuesList().size());
       List<Ghost> ghosts = ghostList.getSelectedValuesList();
       Circuit circuit = new CircuitRestController().loadCircuit(currentCircuit.getId());
-      circuit.setObstacles(new CircuitRestController().loadObstaclesByCircuitId(currentCircuit
-          .getId()));
       this.window.showReplayGamePanel(circuit, ghosts);
     } else if (ae.getSource() == this.backButton) {
       this.window.showStartMenu();

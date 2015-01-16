@@ -36,7 +36,6 @@ public class GetUserServlet extends HttpServlet {
       request.setAttribute("username", user.getUsername());
       request.setAttribute("fullName", user.getFullName());
       request.setAttribute("email", user.getEmail());
-      request.setAttribute("password", BasicAuthFeature.decode(authString)[1]);
       request.setAttribute("isPublic", user.getIsPublic());
 
       request.getRequestDispatcher("userProfile.jsp").forward(request, response);

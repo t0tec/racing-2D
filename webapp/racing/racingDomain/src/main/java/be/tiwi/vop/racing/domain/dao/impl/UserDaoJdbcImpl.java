@@ -26,7 +26,7 @@ public class UserDaoJdbcImpl implements UserDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM users");
+      ps = this.connection.prepareStatement("SELECT u.id, u.username, u.email, u.public, u.full_name FROM users u");
       rs = ps.executeQuery();
 
       while (rs.next()) {
@@ -48,7 +48,7 @@ public class UserDaoJdbcImpl implements UserDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM users WHERE username = ?");
+      ps = this.connection.prepareStatement("SELECT u.id, u.username, u.email, u.public, u.full_name FROM users u WHERE username = ?");
       ps.setString(1, username);
 
       rs = ps.executeQuery();
@@ -102,7 +102,7 @@ public class UserDaoJdbcImpl implements UserDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM users WHERE id = ?");
+      ps = this.connection.prepareStatement("SELECT u.id, u.username, u.email, u.public, u.full_name FROM users u WHERE id = ?");
       ps.setInt(1, id);
 
       rs = ps.executeQuery();
@@ -125,7 +125,7 @@ public class UserDaoJdbcImpl implements UserDao {
     PreparedStatement ps = null;
     ResultSet rs = null;
     try {
-      ps = this.connection.prepareStatement("SELECT * FROM users WHERE email = ?");
+      ps = this.connection.prepareStatement("SELECT u.id, u.username, u.email, u.public, u.full_name FROM users u WHERE email = ?");
       ps.setString(1, email);
 
       rs = ps.executeQuery();
@@ -167,13 +167,11 @@ public class UserDaoJdbcImpl implements UserDao {
     try {
       ps =
           connection
-              .prepareStatement("UPDATE users SET username = ?, password = ?, email = ?, full_name = ?, public = ? WHERE id = ?");
-      ps.setString(1, user.getUsername());
-      ps.setString(2, user.getPassword());
-      ps.setString(3, user.getEmail());
-      ps.setString(4, user.getFullName());
-      ps.setBoolean(5, user.getIsPublic());
-      ps.setInt(6, user.getId());
+              .prepareStatement("UPDATE users SET email = ?, full_name = ?, public = ? WHERE id = ?");
+      ps.setString(1, user.getEmail());
+      ps.setString(2, user.getFullName());
+      ps.setBoolean(3, user.getIsPublic());
+      ps.setInt(4, user.getId());
       ps.executeUpdate();
     } catch (SQLException sqlEx) {
       sqlEx.printStackTrace();
@@ -187,7 +185,6 @@ public class UserDaoJdbcImpl implements UserDao {
     try {
       user.setId(rs.getInt("id"));
       user.setUsername(rs.getString("username"));
-      user.setPassword(rs.getString("password"));
       user.setEmail(rs.getString("email"));
       user.setFullName(rs.getString("full_name"));
       user.setIsPublic(rs.getBoolean("public"));

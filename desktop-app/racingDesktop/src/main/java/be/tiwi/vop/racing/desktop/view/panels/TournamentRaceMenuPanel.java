@@ -168,8 +168,6 @@ public class TournamentRaceMenuPanel extends JPanel implements ActionListener, I
   @Override
   public void actionPerformed(ActionEvent ae) {
     if (ae.getSource() == this.startGameButton) {
-      this.circuit.setObstacles(new CircuitRestController().loadObstaclesByCircuitId(this.circuit
-          .getId()));
       this.window.showTournamentRaceGamePanel(this.race, this.circuit);
     } else if (ae.getSource() == this.backButton) {
       this.window.showTournamentMenu();

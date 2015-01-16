@@ -11,6 +11,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import be.tiwi.vop.racing.web.service.client.BasicAuthFeature;
 import be.tiwi.vop.racing.web.service.client.UserServiceClient;
 
 @WebServlet("/UpdateUserServlet")
@@ -39,7 +40,12 @@ public class UpdateUserServlet extends HttpServlet {
       request.getSession(true).setAttribute("info", "Update Succeeded!");
       response.sendRedirect("getProfile.do");
     } else {
-      request.getSession(true).setAttribute("info", "Update failed!");
+      if (!BasicAuthFeature.decode(authString)[1].equals(password)) {
+        request.getSession(true).setAttribute("info", "Password not recognized!");
+
+      } else {
+        request.getSession(true).setAttribute("info", "Update failed!");
+      }
       response.sendRedirect("getProfile.do");
     }
   }

@@ -338,8 +338,6 @@ public class TournamentMenuPanel extends JPanel implements ActionListener, Inter
       logger.info("Selected circuit id: {}", race.getCircuitId());
 
       Circuit circuit = new CircuitRestController().loadCircuit(race.getCircuitId());
-      circuit
-          .setObstacles(new CircuitRestController().loadObstaclesByCircuitId(race.getCircuitId()));
       circuit.setLapCount(race.getLaps());
 
       this.window.showTournamentRaceMenu(circuit, race);

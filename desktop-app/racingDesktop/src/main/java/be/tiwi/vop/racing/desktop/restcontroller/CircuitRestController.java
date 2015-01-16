@@ -148,6 +148,7 @@ public class CircuitRestController {
       if (user != null) {
         Future<Circuit> getCircuit = executor.submit(circuitWorker);
         circuit = getCircuit.get();
+        logger.debug(circuit.getObstacles().toString());
       }
       executor.shutdown();
     } catch (InterruptedException e) {
@@ -157,50 +158,6 @@ public class CircuitRestController {
     }
 
     return circuit;
-  }
-
-  public ArrayList<Obstacle> loadObstaclesByCircuitId(final int circuitId) {
-    logger.info("Loading all obstacles from circuit with id {}", circuitId);
-
-    ArrayList<Obstacle> obstacles = new ArrayList<Obstacle>();
-
-    try {
-      ExecutorService executor = Executors.newCachedThreadPool();
-
-      final Callable<List<Obstacle>> obstaclesWorker = new AbstractServiceClient<List<Obstacle>>() {
-
-        @Override
-        protected List<Obstacle> callImpl() throws Exception {
-          client.register(user.getBasicAuth());
-          webTarget = client.target(super.BASE_URL).path("circuits");
-          WebTarget circuitsWebTarget =
-              webTarget.path(Integer.toString(circuitId)).path("obstacles");
-
-          Response resp = circuitsWebTarget.request(MediaType.APPLICATION_JSON).get();
-
-          if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
-            logger.info("request for obstacles OK");
-            return new Gson().fromJson(resp.readEntity(String.class),
-                new TypeToken<List<Obstacle>>() {}.getType());
-          } else {
-            return Collections.<Obstacle>emptyList();
-          }
-        }
-
-      };
-
-      if (user != null) {
-        Future<List<Obstacle>> getObstacles = executor.submit(obstaclesWorker);
-        obstacles = new ArrayList<Obstacle>(getObstacles.get());
-      }
-      executor.shutdown();
-    } catch (InterruptedException e) {
-      logger.error("Error occured: " + e.getMessage());
-    } catch (ExecutionException e) {
-      logger.error("Error occured: " + e.getMessage());
-    }
-
-    return obstacles;
   }
 
 }

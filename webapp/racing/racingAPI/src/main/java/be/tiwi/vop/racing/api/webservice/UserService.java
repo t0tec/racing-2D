@@ -89,12 +89,11 @@ public class UserService {
 
     if (username != null) {
       ProjectManager pm = new ProjectManager();
-      User user = pm.getUserByUsername(username);
+      User user = pm.authenticateUser(username, password);
 
       if (user != null) {
         user.setFullName(fullName);
         user.setEmail(email);
-        user.setPassword(FeedTransformer.getSHA512(password));
         user.setIsPublic(Boolean.valueOf(isPublic));
 
         pm.updateUser(user);
