@@ -31,5 +31,9 @@ button[type="submit"] {
 
 a.navbar-brand {
 	padding: 15px 15px 15px 0;
-	color: white;
+	color: #ffffff;
+}
+
+a.navbar-brand:hover {
+	color: #1e90ff;
 }

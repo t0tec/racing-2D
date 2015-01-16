@@ -148,7 +148,6 @@ public class CircuitRestController {
       if (user != null) {
         Future<Circuit> getCircuit = executor.submit(circuitWorker);
         circuit = getCircuit.get();
-        logger.debug(circuit.getObstacles().toString());
       }
       executor.shutdown();
     } catch (InterruptedException e) {

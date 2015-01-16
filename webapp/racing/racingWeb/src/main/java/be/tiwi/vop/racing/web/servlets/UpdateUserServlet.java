@@ -42,7 +42,6 @@ public class UpdateUserServlet extends HttpServlet {
     } else {
       if (!BasicAuthFeature.decode(authString)[1].equals(password)) {
         request.getSession(true).setAttribute("info", "Password not recognized!");
-
       } else {
         request.getSession(true).setAttribute("info", "Update failed!");
       }
