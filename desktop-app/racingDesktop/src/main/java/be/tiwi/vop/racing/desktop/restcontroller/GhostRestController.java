@@ -77,75 +77,92 @@ public class GhostRestController {
   public void createOrUpdateGhost(final Ghost ghost) {
     if (hasGhostImprovedTime(ghost)) {
       logger.info("Updating ghost with user id {} for circuit with id {}", ghost.getUserId(),
-          ghost.getCircuitId());
-      ExecutorService executor = Executors.newCachedThreadPool();
+                  ghost.getCircuitId());
 
-      final Callable<Void> updateGhostWorker = new AbstractServiceClient<Void>() {
+      try {
+        ExecutorService executor = Executors.newCachedThreadPool();
 
-        @Override
-        protected Void callImpl() throws Exception {
-          client.register(user.getBasicAuth());
-          webTarget = client.target(super.BASE_URL).path("ghosts");
-          WebTarget updateWebTarget = webTarget.path("update");
+        final Callable<Void> updateGhostWorker = new AbstractServiceClient<Void>() {
 
-          String json = new Gson().toJson(ghost);
+          @Override
+          protected Void callImpl() throws Exception {
+            client.register(user.getBasicAuth());
+            webTarget = client.target(super.BASE_URL).path("ghosts");
+            WebTarget updateWebTarget = webTarget.path("update");
 
-          // Create new form for adding parameters
-          Form form = new Form();
-          form.param("json", json);
+            String json = new Gson().toJson(ghost);
 
-          Response resp =
-              updateWebTarget.request().post(Entity.entity(form, MediaType.APPLICATION_JSON));
+            // Create new form for adding parameters
+            Form form = new Form();
+            form.param("json", json);
 
-          if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
-            // everything OK
-            return null;
-          } else {
-            logger.error("Failed to update ghost");
-            throw new ApiPostRequestException("Request failed: " + resp.getLocation());
+            Response resp =
+                updateWebTarget.request().post(Entity.entity(form, MediaType.APPLICATION_JSON));
+
+            if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
+              // everything OK
+              return null;
+            } else {
+              logger.error("Failed to update ghost");
+              throw new ApiPostRequestException("Request failed: " + resp.getLocation());
+            }
           }
-        }
 
-      };
+        };
+        Future<Void> updateGhost = executor.submit(updateGhostWorker);
+        updateGhost.get();
 
-      executor.submit(updateGhostWorker);
-      executor.shutdown();
+        executor.shutdown();
+      } catch (InterruptedException e) {
+        logger.error(e.getMessage());
+      } catch (ExecutionException e) {
+        logger.error(e.getMessage());
+      }
     }
 
     if (loadUserGhost(ghost.getCircuitId()) == null) {
       logger.info("Creating ghost with user id {} for circuit with id {}", ghost.getUserId(),
-          ghost.getCircuitId());
-      ExecutorService executor = Executors.newCachedThreadPool();
+                  ghost.getCircuitId());
 
-      final Callable<Void> createGhostWorker = new AbstractServiceClient<Void>() {
+      try {
+        ExecutorService executor = Executors.newCachedThreadPool();
 
-        @Override
-        protected Void callImpl() throws Exception {
-          client.register(user.getBasicAuth());
-          webTarget = client.target(super.BASE_URL).path("ghosts");
-          WebTarget createWebTarget = webTarget.path("create");
+        final Callable<Void> createGhostWorker = new AbstractServiceClient<Void>() {
 
-          String json = new Gson().toJson(ghost);
+          @Override
+          protected Void callImpl() throws Exception {
+            client.register(user.getBasicAuth());
+            webTarget = client.target(super.BASE_URL).path("ghosts");
+            WebTarget createWebTarget = webTarget.path("create");
 
-          // Create new form for adding parameters
-          Form form = new Form();
-          form.param("json", json);
+            String json = new Gson().toJson(ghost);
 
-          Response resp =
-              createWebTarget.request().post(Entity.entity(form, MediaType.APPLICATION_JSON));
+            // Create new form for adding parameters
+            Form form = new Form();
+            form.param("json", json);
 
-          if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
-            // everything OK
-            return null;
-          } else {
-            logger.error("Failed to create ghost");
-            throw new ApiPostRequestException("Request failed: " + resp.getLocation());
+            Response resp =
+                createWebTarget.request().post(Entity.entity(form, MediaType.APPLICATION_JSON));
+
+            if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
+              // everything OK
+              return null;
+            } else {
+              logger.error("Failed to create ghost");
+              throw new ApiPostRequestException("Request failed: " + resp.getLocation());
+            }
           }
-        }
-      };
+        };
 
-      executor.submit(createGhostWorker);
-      executor.shutdown();
+        Future<Void> createGhost = executor.submit(createGhostWorker);
+        createGhost.get();
+
+        executor.shutdown();
+      } catch (InterruptedException e) {
+        logger.error("Error occured: " + e.getMessage());
+      } catch (ExecutionException e) {
+        logger.error("Error occured: " + e.getMessage());
+      }
     }
   }
 

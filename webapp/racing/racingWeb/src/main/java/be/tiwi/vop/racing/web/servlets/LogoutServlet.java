@@ -15,8 +15,7 @@ public class LogoutServlet extends HttpServlet {
   protected void processRequest(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     HttpSession session = request.getSession();
-    if (session == null
-        || (session.getAttribute("username") != null || session.getAttribute("userid") != null || session
+    if ((session.getAttribute("username") != null || session.getAttribute("userid") != null || session
             .getAttribute("authString") != null)) {
       session.removeAttribute("username");
       session.removeAttribute("userid");
