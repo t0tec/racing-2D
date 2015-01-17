@@ -15,7 +15,7 @@ public class BasicAuthFeature implements ClientRequestFilter {
   }
 
   public BasicAuthFeature(String username, String password) {
-    this.authString = getBase64(username, password);
+    this.authString = getBase64(username + ":" + password);
   }
 
   @Override
@@ -23,8 +23,8 @@ public class BasicAuthFeature implements ClientRequestFilter {
     requestContext.getHeaders().add("Authorization", "Basic " + authString);
   }
 
-  private String getBase64(String username, String password) {
-    byte[] val = (username + ":" + password).getBytes(Charset.forName("UTF-8"));
+  private String getBase64(String value) {
+    byte[] val = value.getBytes(Charset.forName("UTF-8"));
     return DatatypeConverter.printBase64Binary(val);
   }
 

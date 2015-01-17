@@ -126,42 +126,48 @@ public class TournamentRestController {
 
   public void createResults(final List<Result> results) {
     logger.info("Creating results for user id {} for race with id {}", results.get(0).getUserId(),
-        results.get(0).getRaceId());
+                results.get(0).getRaceId());
 
-    ExecutorService executor = Executors.newCachedThreadPool();
+    try {
+      ExecutorService executor = Executors.newCachedThreadPool();
 
+      final Callable<Void> createResultWorker = new AbstractServiceClient<Void>() {
 
-    final Callable<Void> createResultWorker = new AbstractServiceClient<Void>() {
+        @Override
+        protected Void callImpl() throws Exception {
+          client.register(user.getBasicAuth());
+          webTarget = client.target(super.BASE_URL).path("tournaments").path("race");
+          WebTarget createWebTarget =
+              webTarget.path(Integer.toString(results.get(0).getRaceId())).path("create");
 
-      @Override
-      protected Void callImpl() throws Exception {
-        client.register(user.getBasicAuth());
-        webTarget = client.target(super.BASE_URL).path("tournaments").path("race");
-        WebTarget createWebTarget =
-            webTarget.path(Integer.toString(results.get(0).getRaceId())).path("create");
+          String json = new Gson().toJson(results);
 
-        String json = new Gson().toJson(results);
+          // Create new form for adding parameters
+          Form form = new Form();
+          form.param("json", json);
 
-        // Create new form for adding parameters
-        Form form = new Form();
-        form.param("json", json);
+          Response resp =
+              createWebTarget.request().post(Entity.entity(form, MediaType.APPLICATION_JSON));
 
-        Response resp =
-            createWebTarget.request().post(Entity.entity(form, MediaType.APPLICATION_JSON));
-
-        if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
-          // everything OK
-          return null;
-        } else {
-          logger.error("Failed to create result");
-          throw new ApiPostRequestException("Request failed: " + resp.getLocation());
+          if (resp.getStatus() == Response.Status.OK.getStatusCode()) {
+            // everything OK
+            return null;
+          } else {
+            logger.error("Failed to create result");
+            throw new ApiPostRequestException("Request failed: " + resp.getLocation());
+          }
         }
-      }
 
-    };
+      };
+      Future<Void> createResults = executor.submit(createResultWorker);
+      createResults.get();
+      executor.shutdown();
 
-    executor.submit(createResultWorker);
-    executor.shutdown();
+    } catch (InterruptedException e) {
+      logger.error("Error occured: " + e.getMessage());
+    } catch (ExecutionException e) {
+      logger.error("Error occured: " + e.getMessage());
+    }
 
   }
 
