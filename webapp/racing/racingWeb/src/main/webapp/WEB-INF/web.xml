@@ -115,4 +115,8 @@
 		<param-name>javax.servlet.jsp.jstl.fmt.fallbackLocale</param-name>
 		<param-value>en</param-value>
 	</context-param>
+	<error-page>
+		<location>/pageNotFound.jsp</location>
+		<error-code>404</error-code>
+	</error-page>
 </web-app>

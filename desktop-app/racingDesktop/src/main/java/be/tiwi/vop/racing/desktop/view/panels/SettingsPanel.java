@@ -237,11 +237,17 @@ public class SettingsPanel extends JPanel implements ActionListener, Internation
       if (this == o) {
         return true;
       }
-      if (o == null) {
+      if (!(o instanceof Language)) {
         return false;
       }
 
-      return this.code.equals(((Language) o).code);
+      Language that = (Language) o;
+
+      if (!code.equals(that.code)) {
+        return false;
+      }
+
+      return true;
     }
   }
 

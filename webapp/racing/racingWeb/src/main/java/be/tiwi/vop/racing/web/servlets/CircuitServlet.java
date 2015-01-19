@@ -162,10 +162,7 @@ public class CircuitServlet extends HttpServlet {
     // request api
     CircuitServiceClient client = new CircuitServiceClient(authString);
     int status = client.favoriteCircuit(userId, id);
-    // write response
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    String json = new Gson().toJson(id);
+
     response.getWriter().write(status);
   }
 
@@ -178,10 +175,7 @@ public class CircuitServlet extends HttpServlet {
     // request api
     CircuitServiceClient client = new CircuitServiceClient(authString);
     int status = client.unfavoriteCircuit(userId, id);
-    // write response
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    String json = new Gson().toJson(id);
+
     response.getWriter().write(status);
   }
 

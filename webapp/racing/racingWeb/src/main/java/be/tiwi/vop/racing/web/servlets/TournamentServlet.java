@@ -50,10 +50,6 @@ public class TournamentServlet extends HttpServlet {
     TournamentServiceClient client = new TournamentServiceClient(authString);
     int status = client.enrollTournament(userId, id);
 
-    // write response
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    String json = new Gson().toJson(id);
     response.getWriter().write(status);
   }
 
@@ -68,10 +64,6 @@ public class TournamentServlet extends HttpServlet {
     TournamentServiceClient client = new TournamentServiceClient(authString);
     int status = client.resignTournament(userId, id);
 
-    // write response
-    response.setContentType("application/json");
-    response.setCharacterEncoding("UTF-8");
-    String json = new Gson().toJson(id);
     response.getWriter().write(status);
   }
 
