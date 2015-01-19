@@ -20,19 +20,14 @@ public abstract class GameEngine implements GhostFinishedBase {
   protected final Logger logger = LoggerFactory.getLogger(this.getClass());
 
   protected Circuit circuit;
-  protected int time;
+  protected int time = 0;
 
-  protected List<Ghost> ghosts;
-  protected final List<GhostFinishedListener> ghostFinishedListeners;
+  protected List<Ghost> ghosts = new ArrayList<Ghost>();
+  protected final List<GhostFinishedListener> ghostFinishedListeners = new ArrayList<GhostFinishedListener>();
 
   public GameEngine(Circuit circuit) {
     logger.info("Creating {}", this.getClass().getSimpleName());
-
     this.circuit = circuit;
-    this.time = 0;
-
-    this.ghosts = new ArrayList<Ghost>();
-    this.ghostFinishedListeners = new ArrayList<GhostFinishedListener>();
 
     setObstaclesPositions();
   }

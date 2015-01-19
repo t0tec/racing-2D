@@ -1,5 +1,7 @@
 package be.tiwi.vop.racing.desktop.controller;
 
+import com.esotericsoftware.kryo.Kryo;
+
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -22,30 +24,26 @@ import be.tiwi.vop.racing.desktop.restcontroller.GhostRestController;
 public class GamePlayEngine extends GameEngine implements LapCompletedBase {
 
   protected Car car;
-  protected Ghost ghostCar;
+  protected Ghost ghostCar = new Ghost();
   protected int lastLapTime;
-  protected int lapTime;
+  protected int lapTime = 0;
   protected int lapCount;
-  protected int lapsDone;
-  protected boolean hasFinished;
-  protected LinkedHashSet<Tile> reachedCheckpoints;
+  protected int lapsDone = 0;
+  protected boolean hasFinished = false;
+  protected LinkedHashSet<Tile> reachedCheckpoints = new LinkedHashSet<Tile>();
   protected Tile lastCarPositionTile;
 
-  protected final List<LapCompletedListener> lapCompletedListeners;
+  protected final List<LapCompletedListener>
+      lapCompletedListeners =
+      new ArrayList<LapCompletedListener>();
 
   public GamePlayEngine(Circuit circuit, Car car) {
     super(circuit);
-    this.lapTime = 0;
     this.car = car;
-    this.ghostCar = new Ghost();
     this.ghostCar.setCircuitId(circuit.getId());
     this.ghostCar.setUserId(AuthenticatedUser.getInstance().getId());
     this.ghostCar.setUsername(AuthenticatedUser.getInstance().getUsername());
     this.lapCount = circuit.getLapCount();
-    this.lapsDone = 0;
-    this.hasFinished = false;
-    this.reachedCheckpoints = new LinkedHashSet<Tile>();
-    this.lapCompletedListeners = new ArrayList<LapCompletedListener>();
 
     if (this.circuit.getCheckpoints().size() == 0) {
       this.setLastTileAsCheckpoint();
@@ -96,7 +94,21 @@ public class GamePlayEngine extends GameEngine implements LapCompletedBase {
     if (this.hasFinished) {
       // Update player ghost to check if he has a new fastest lap time
       this.lastLapTime = lapTime;
+
       new GhostRestController().createOrUpdateGhost(this.ghostCar);
+
+      if (this.getGhosts().contains(this.ghostCar)) {
+        Ghost ghost = this.getGhosts().get(this.getGhosts().indexOf(this.ghostCar));
+
+        Kryo kryo = new Kryo();
+        Ghost copy = kryo.copy(this.ghostCar);
+
+        if (copy.getTime() < ghost.getTime()) {
+          ghost.setTime(copy.getTime());
+          ghost.setPoses(copy.getPoses());
+        }
+      }
+
       this.lapsDone++;
       logger.info("laps done: {} -- lap time: {}", this.lapsDone, this.lastLapTime);
       reset();
