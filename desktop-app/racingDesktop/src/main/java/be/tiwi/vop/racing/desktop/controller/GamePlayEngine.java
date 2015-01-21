@@ -5,6 +5,7 @@ import com.esotericsoftware.kryo.Kryo;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 
@@ -45,6 +46,7 @@ public class GamePlayEngine extends GameEngine implements LapCompletedBase {
     this.ghostCar.setUsername(AuthenticatedUser.getInstance().getUsername());
     this.lapCount = circuit.getLapCount();
 
+    // TODO: need at least one checkpoint always, track maker should make 1 checkpoint mandatory
     if (this.circuit.getCheckpoints().size() == 0) {
       this.setLastTileAsCheckpoint();
     }
@@ -245,6 +247,8 @@ public class GamePlayEngine extends GameEngine implements LapCompletedBase {
   public void resetGame() {
     this.hasFinished = false;
     reachedCheckpoints.clear();
+    // TODO: reset poses needed
+    this.ghostCar.setPoses(new LinkedHashMap<Integer, Pose>());
     this.lapsDone = 0;
     this.lapTime = 0;
     this.car.setBatteryERSLevel(Car.getMaximumBatteryERSLevel());
